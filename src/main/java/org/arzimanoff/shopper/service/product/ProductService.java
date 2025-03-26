@@ -1,15 +1,16 @@
 package org.arzimanoff.shopper.service.product;
 
-import jakarta.persistence.Lob;
 import org.arzimanoff.shopper.model.Product;
+import org.arzimanoff.shopper.request.AddProductRequest;
+import org.arzimanoff.shopper.request.UpdateProductRequest;
 
 import java.util.List;
 
 public interface ProductService {
-    Product addProduct(Product product);
+    Product addProduct(AddProductRequest request);
     Product getProductById(Long id);
     void deleteProduct(Long id);
-    void updateProduct(Product newProduct, Long productId);
+    Product updateProduct(UpdateProductRequest request, Long productId);
     List<Product> getAllProducts();
     List<Product> getProductsByCategory(String category);
     List<Product> getProductsByBrand(String brand);

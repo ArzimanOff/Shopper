@@ -19,6 +19,4 @@ public interface ProductService {
     List<Product> getProductsByBrandAndName(String brand, String name);
 
     Long countProductsByBrandAndName(String brand, String name);
-
-
 }

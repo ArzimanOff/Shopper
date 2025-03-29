@@ -25,7 +25,7 @@ public class CategoryController {
     public ResponseEntity<ApiResponse> getAllCategories(){
         try {
             List<Category> categories = categoryService.getAllCategories();
-            return ResponseEntity.ok(new ApiResponse("Список категорий найден:", categories));
+            return ResponseEntity.ok(new ApiResponse("Список категорий найден!", categories));
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(new ApiResponse("Ошибка поиска категорий!", HttpStatus.INTERNAL_SERVER_ERROR));

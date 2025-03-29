@@ -26,7 +26,7 @@ public class ImageController {
         this.imageService = imageService;
     }
 
-    @PutMapping("/upload")
+    @PostMapping("/upload")
     public ResponseEntity<ApiResponse> saveImages(
             @RequestParam List<MultipartFile> files, // точно ли не @RequestBody?
             @RequestParam Long productId
@@ -42,7 +42,8 @@ public class ImageController {
         }
     }
 
-    @GetMapping("/image/download/{imageId}")
+    // Скачивание изображения по ID
+    @GetMapping("/{imageId}/download")
     public ResponseEntity<Resource> downloadImage(
             @PathVariable Long imageId
     ) throws SQLException {
@@ -59,7 +60,7 @@ public class ImageController {
                 .body(resource);
     }
 
-    @PutMapping("/image/{imageId}/update")
+    @PutMapping("/{imageId}")
     public ResponseEntity<ApiResponse> updateImage(
             @RequestBody MultipartFile file,
             @PathVariable Long imageId
@@ -79,7 +80,7 @@ public class ImageController {
                 .body(new ApiResponse("Ошибка обновления фотки.", HttpStatus.INTERNAL_SERVER_ERROR));
     }
 
-    @DeleteMapping("/image/{imageId}/delete")
+    @DeleteMapping("/{imageId}")
     public ResponseEntity<ApiResponse> deleteImage(
             @PathVariable Long imageId
     ){
